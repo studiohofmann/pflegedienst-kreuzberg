@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f0f7ff;
   --foreground: #171717;
 }
 
@@ -23,4 +23,71 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
+  @apply flex items-center justify-center;
+  @apply text-[#0054a6];
+}
+
+.site-layout {
+  @apply bg-orange-50;
+  @apply space-y-16;
+  @apply min-h-screen w-full max-w-4xl;
+}
+
+header {
+  @apply px-4 pt-8 md:px-8;
+  @apply flex flex-col gap-4;
+}
+
+section {
+  @apply px-4  md:px-8;
+  @apply flex flex-col gap-4;
+}
+
+footer {
+  @apply px-4 pt-16 pb-2 md:px-8;
+  @apply bg-[#dfeeff];
+  @apply text-sm;
+  @apply flex flex-col gap-8;
+}
+
+h1 {
+  @apply text-xl font-bold;
+}
+
+a {
+  @apply text-[#0a87ed] font-bold;
+  @apply hover:text-[#0054A6];
+}
+
+button {
+  @apply px-4 py-2;
+  @apply w-full;
+  @apply text-orange-50 font-bold;
+  @apply bg-[#0a87ed];
+}
+
+form {
+  @apply flex flex-col gap-4;
+}
+
+input,
+textarea {
+  @apply text-[#0054A6];
+  @apply bg-[#f0f7ff];
+  @apply px-4 py-2 w-full;
+  @apply outline outline-[#0a87ed];
+}
+input::placeholder,
+textarea::placeholder {
+  @apply text-[#7bc2fe];
+}
+
+input:focus,
+textarea:focus,
+input:active,
+textarea:active {
+  @apply shadow-none;
+  @apply bg-[#dfeeff];
+  @apply outline-[#0054A6];
 }
