@@ -64,7 +64,8 @@ button {
   @apply px-4 py-2;
   @apply w-full;
   @apply text-orange-50 font-bold;
-  @apply bg-[#0a87ed];
+  @apply bg-[#0a87ed] hover:bg-[#0054A6];
+  @apply cursor-pointer;
 }
 
 form {
