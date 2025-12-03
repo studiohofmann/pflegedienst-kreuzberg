@@ -51,11 +51,14 @@ export default function ContactForm() {
 
         if (res.ok) {
           setStatus("✅ Message sent successfully!");
-          // clear form fields
-          formRef.current?.reset();
+          // clear form fields (guard explicitly to avoid runtime errors)
+          if (formRef.current) formRef.current.reset();
           // Reset Turnstile widget
           if (typeof window !== "undefined" && window.turnstile) {
-            window.turnstile.reset(widgetIdRef.current ?? undefined);
+            // Reset widget safely — pass undefined if no id
+            window.turnstile.reset(
+              widgetIdRef.current != null ? widgetIdRef.current : undefined
+            );
           }
           setToken("");
         } else {
@@ -72,7 +75,9 @@ export default function ContactForm() {
         }
       } catch (error) {
         console.error("Contact form error:", error);
-        setStatus("❌ Network error. Please try again.");
+        // Report useful error text (safe for debugging - later revert to generic message)
+        const message = error instanceof Error ? error.message : String(error);
+        setStatus(`❌ Error: ${message || "Network error"}`);
       } finally {
         setIsSending(false);
       }
